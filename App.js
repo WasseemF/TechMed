@@ -4,13 +4,32 @@ import {
     Text,
     View
 } from 'react-native';
-import { Input } from './components/Input';
+import * as firebase from 'firebase';
+import {Input} from './components/Input';
 
-export default class App extends React.Component {
-    render(){
+export default class App extends Component {
+    state = {
+        email: '',
+        password: '',
+    };
+
+    componentWillMount(){
+        const firebaseconfig ={
+            apiKey: '',
+            authDomain: '',
+        };
+        firebase.initializeApp(firebaseconfig);
+    }
+
+    render() {
         return (
-          <View style={styles.container}>
-          </View>
+            <View style={styles.container}>
+                <Input style={styles.input}
+                       label='E-mail'
+                       onChangeText={email => this.setState({email})}
+                       value={this.state.email}
+                />
+            </View>
         );
     }
 }

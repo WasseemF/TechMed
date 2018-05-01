@@ -6,6 +6,9 @@ const Input = ({label, value, onChangeText, placeholder, secureTextEntry}) => {
     return (
         <View>
             <TextField
+                tintColor={"#2b0e50"}
+                textColor={"#2b0e50"}
+                labelTextStyle={{fontWeight: '500'}}
                 label={label}
                 autoCorrect={false}
                 onChangeText={onChangeText}
@@ -15,5 +18,4 @@ const Input = ({label, value, onChangeText, placeholder, secureTextEntry}) => {
         </View>
     )
 };
-
 export {Input};

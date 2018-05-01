@@ -5,7 +5,8 @@ import {
     View
 } from 'react-native';
 import * as firebase from 'firebase';
-import {Input} from './components/Input';
+import { Input } from './components/Input';
+import Splash from './components/Splash';
 
 export default class App extends Component {
     state = {

@@ -12,6 +12,7 @@ export default class LoginScreen extends Component {
         password: '',
     };
 
+
     componentWillMount() {
         const firebaseconfig = {
             apiKey: '',
@@ -21,10 +22,10 @@ export default class LoginScreen extends Component {
     }
 
     render() {
+        var{navigate} = this.props.navigation;
         return (
             <View style={styles.container}>
                 <Image style={styles.img_logo} source={require('../images/logo.png')}/>
-
 
                 {/* INPUT FIELDS */}
                 <KeyboardAvoidingView behavior='padding'>
@@ -51,7 +52,8 @@ export default class LoginScreen extends Component {
                     hitSlop={{top: 0, bottom: 0, left: 0, right: 0}}/>
                 <Button
                     style={styles.btn_sign_in}
-                    source={require('../images/sign_in_button.png')}/>
+                    source={require('../images/sign_in_button.png')}
+                    onPress={() => navigate("Profile",{name: "Wasseem Fayad", type: "Administrator"})}/>
 
                 {/* FOOTER */}
                 <View style={{justifyContent: 'center', alignItems: 'center'}}>

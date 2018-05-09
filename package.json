@@ -12,7 +12,8 @@
     "react-native": "^0.55.3",
     "react-native-check-box": "latest",
     "react-native-material-textfield": "^0.12.0",
-    "react-navigation": "^2.0.1"
+    "react-navigation": "^2.0.1",
+    "react-native-navigation": "latest"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",

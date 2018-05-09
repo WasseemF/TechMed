@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        backgroundColor: 'white'
     },
     img_logo: {
         width: 115,

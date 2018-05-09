@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, StatusBar} from 'react-native';
+import {StackNavigator} from 'react-navigation';
 
-export default class Splash extends Component {
+export default class SplashScreen extends Component {
+
     render() {
         return (
             <View style={styles.container}>
-                <StatusBar hidden={true}/>
+                <StatusBar hidden={true} />
                 <Image
                     style={styles.splash}
                     resizeMode='stretch'

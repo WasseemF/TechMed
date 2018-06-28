@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, View, KeyboardAvoidingView} from 'react-native';
+import {Image, StyleSheet, Text, View, KeyboardAvoidingView, ActivityIndicator} from 'react-native';
 import * as firebase from 'firebase';
 import {Input} from '../components/Input';
 import {Button} from '../components/Button';
@@ -10,21 +10,37 @@ export default class LoginScreen extends Component {
     state = {
         email: '',
         password: '',
+        authenticating: false,
     };
 
 
     componentWillMount() {
         const firebaseconfig = {
-            apiKey: '',
-            authDomain: '',
+            apiKey: 'AIzaSyC5uhtt2m7pEenZZMqxdZ0WK3ZkPQOMJNw',
+            authDomain: 'tech-med.firebaseapp.com',
         };
         firebase.initializeApp(firebaseconfig);
     }
 
-    render() {
-        var{navigate} = this.props.navigation;
+
+    onPressSignIn(){
+        this.setState({
+            authenticating: true,
+        })
+    }
+
+    renderCurrentState() {
+        if (this.state.authenticating) {
+            return (
+                <View>
+                    <ActivityIndicator size='large'/>
+                </View>
+            )
+        }
+
         return (
-            <View style={styles.container}>
+
+            <View>
                 <Image style={styles.img_logo} source={require('../images/logo.png')}/>
 
                 {/* INPUT FIELDS */}
@@ -53,7 +69,8 @@ export default class LoginScreen extends Component {
                 <Button
                     style={styles.btn_sign_in}
                     source={require('../images/sign_in_button.png')}
-                    onPress={() => navigate("Profile",{name: "Wasseem Fayad", type: "Administrator"})}/>
+                    onPress={() => this.onPressSignIn()} />
+                    {/*onPress={() => navigate("Profile", {name: "Wasseem Fayad", type: "Administrator"})}/>*/}
 
                 {/* FOOTER */}
                 <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -61,6 +78,18 @@ export default class LoginScreen extends Component {
                 </View>
                 <Button>Register here!</Button>
                 <Button>Work Offline</Button>
+            </View>
+        )
+
+    }
+
+    render() {
+        var {navigate} = this.props.navigation;
+
+        return (
+
+            <View style={styles.container}>
+                {this.renderCurrentState()}
             </View>
 
         );
